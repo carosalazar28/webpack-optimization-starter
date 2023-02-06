@@ -1,1 +1,126 @@
-(()=>{"use strict";let e=JSON.parse('[{"id":1560865205317,"text":"Buy eggs","completed":false},{"id":1560865205318,"text":"Do 15 min exercise","completed":false}]');function t(){return e}function n(e){const t=e.map((function(e){const t=e.completed?"completed":"",n=e.completed?"checked":"";return`\n          <li data-id="${e.id}" class="${t}">\n              <span class="custom-checkbox">\n                  <img class="check" src="./images/checkmark.svg" width="22" height="22"></img>\n                  <input class="real-checkbox" type="checkbox" ${n} />\n              </span>\n              <label>${e.text}</label>\n              <span class="delete"></span>\n          </li>\n      `}));document.querySelector(".todo-list").innerHTML=t.join("")}function c(e){return parseInt(e.dataset.id||e.parentNode.dataset.id||e.parentNode.parentNode.dataset.id,10)}window.addEventListener("load",(function(){n(t())})),document.addEventListener("change",(function(c){c.target.classList.contains("new-todo")&&function(c){let a=c.target.value;var o;o={id:Date.now(),text:a,completed:!1},e.push(o),n(t()),document.querySelector(".new-todo").value=""}(c)})),document.addEventListener("click",(function(a){a.target.classList.contains("delete")&&function(a){var o;o=c(a.target),e=e.filter((function(e){return e.id!==o})),n(t())}(a),a.target.classList.contains("real-checkbox")&&function(a){!function(t,n){const c=e.findIndex((function(e){return e.id===t}));e[c].completed=n}(c(a.target),a.target.checked),n(t())}(a)}))})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/data.js":
+/*!************************!*\
+  !*** ./src/js/data.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addTodo\": () => (/* binding */ addTodo),\n/* harmony export */   \"getAllTodos\": () => (/* binding */ getAllTodos),\n/* harmony export */   \"removeTodo\": () => (/* binding */ removeTodo),\n/* harmony export */   \"updateTodo\": () => (/* binding */ updateTodo)\n/* harmony export */ });\n/* harmony import */ var _todos_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../todos.json */ \"./src/todos.json\");\n\n\nlet data = _todos_json__WEBPACK_IMPORTED_MODULE_0__\n\nfunction getAllTodos() {\n  return data\n}\n\nfunction addTodo(todo) {\n  data.push(todo)\n}\n\nfunction removeTodo(id) {\n  data = data.filter(function (item) {\n      return item.id !== id\n  })\n}\n\nfunction updateTodo(id, completed) {\n  const itemIndex = data.findIndex(function (value) {\n      return value.id === id\n  })\n  data[itemIndex].completed = completed\n}\n\n//# sourceURL=webpack://webpack-optimization-starter/./src/js/data.js?");
+
+/***/ }),
+
+/***/ "./src/js/event-handlers.js":
+/*!**********************************!*\
+  !*** ./src/js/event-handlers.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"newTodoEventHandler\": () => (/* binding */ newTodoEventHandler),\n/* harmony export */   \"onLoadEventHandler\": () => (/* binding */ onLoadEventHandler),\n/* harmony export */   \"removeTodoEventHandler\": () => (/* binding */ removeTodoEventHandler),\n/* harmony export */   \"toggleTodoEventListener\": () => (/* binding */ toggleTodoEventListener)\n/* harmony export */ });\n/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ \"./src/js/data.js\");\n/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui */ \"./src/js/ui.js\");\n\n\n\n\nfunction onLoadEventHandler() {\n  (0,_ui__WEBPACK_IMPORTED_MODULE_1__.renderTodos)((0,_data__WEBPACK_IMPORTED_MODULE_0__.getAllTodos)())\n}\n\nfunction newTodoEventHandler(event) {\n  let text = event.target.value\n  ;(0,_data__WEBPACK_IMPORTED_MODULE_0__.addTodo)({\n      id: Date.now(),\n      text: text,\n      completed: false\n  })\n  ;(0,_ui__WEBPACK_IMPORTED_MODULE_1__.renderTodos)((0,_data__WEBPACK_IMPORTED_MODULE_0__.getAllTodos)())\n  ;(0,_ui__WEBPACK_IMPORTED_MODULE_1__.clearNewTodoInput)()\n}\n\nfunction removeTodoEventHandler(event) {\n  const id = (0,_ui__WEBPACK_IMPORTED_MODULE_1__.getTodoId)(event.target)\n  ;(0,_data__WEBPACK_IMPORTED_MODULE_0__.removeTodo)(id)\n  ;(0,_ui__WEBPACK_IMPORTED_MODULE_1__.renderTodos)((0,_data__WEBPACK_IMPORTED_MODULE_0__.getAllTodos)())\n}\n\nfunction toggleTodoEventListener(event) {\n  const id = (0,_ui__WEBPACK_IMPORTED_MODULE_1__.getTodoId)(event.target)\n  const isCompleted = event.target.checked\n  ;(0,_data__WEBPACK_IMPORTED_MODULE_0__.updateTodo)(id, isCompleted)\n  ;(0,_ui__WEBPACK_IMPORTED_MODULE_1__.renderTodos)((0,_data__WEBPACK_IMPORTED_MODULE_0__.getAllTodos)())\n}\n\n//# sourceURL=webpack://webpack-optimization-starter/./src/js/event-handlers.js?");
+
+/***/ }),
+
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _event_handlers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event-handlers */ \"./src/js/event-handlers.js\");\n\n\n\nwindow.addEventListener('load', _event_handlers__WEBPACK_IMPORTED_MODULE_0__.onLoadEventHandler)\ndocument.addEventListener('change', function (event) {\n    if (event.target.classList.contains('new-todo')) {\n        (0,_event_handlers__WEBPACK_IMPORTED_MODULE_0__.newTodoEventHandler)(event)\n    }\n})\ndocument.addEventListener('click', function (event) {\n    if (event.target.classList.contains('delete')) {\n        (0,_event_handlers__WEBPACK_IMPORTED_MODULE_0__.removeTodoEventHandler)(event)\n    }\n    if (event.target.classList.contains('real-checkbox')) {\n        (0,_event_handlers__WEBPACK_IMPORTED_MODULE_0__.toggleTodoEventListener)(event)\n    }\n})\n\n//# sourceURL=webpack://webpack-optimization-starter/./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/ui.js":
+/*!**********************!*\
+  !*** ./src/js/ui.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"clearNewTodoInput\": () => (/* binding */ clearNewTodoInput),\n/* harmony export */   \"getTodoId\": () => (/* binding */ getTodoId),\n/* harmony export */   \"renderTodos\": () => (/* binding */ renderTodos)\n/* harmony export */ });\nfunction renderTodos(todos) {\n  const renderedItemArray = todos.map(function (todo) {\n      const className = todo.completed ? 'completed' : ''\n      const completionClass = todo.completed ? 'checked' : ''\n      return `\n          <li data-id=\"${todo.id}\" class=\"${className}\">\n              <span class=\"custom-checkbox\">\n                  <img class=\"check\" src=\"./images/checkmark.svg\" width=\"22\" height=\"22\"></img>\n                  <input class=\"real-checkbox\" type=\"checkbox\" ${completionClass} />\n              </span>\n              <label>${todo.text}</label>\n              <span class=\"delete\"></span>\n          </li>\n      `\n  })\n  document.querySelector('.todo-list').innerHTML = renderedItemArray.join('')\n}\n\nfunction clearNewTodoInput() {\n  document.querySelector('.new-todo').value = ''\n}\n\nfunction getTodoId(element) {\n  return parseInt(\n      element.dataset.id\n      || element.parentNode.dataset.id\n      || element.parentNode.parentNode.dataset.id\n  , 10)\n}\n\n//# sourceURL=webpack://webpack-optimization-starter/./src/js/ui.js?");
+
+/***/ }),
+
+/***/ "./src/todos.json":
+/*!************************!*\
+  !*** ./src/todos.json ***!
+  \************************/
+/***/ ((module) => {
+
+eval("module.exports = JSON.parse('[{\"id\":1560865205317,\"text\":\"Buy eggs\",\"completed\":false},{\"id\":1560865205318,\"text\":\"Do 15 min exercise\",\"completed\":false}]');\n\n//# sourceURL=webpack://webpack-optimization-starter/./src/todos.json?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/index.js");
+/******/ 	
+/******/ })()
+;

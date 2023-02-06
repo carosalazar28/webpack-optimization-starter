@@ -1,12 +1,11 @@
 const path = require('path')
 
 const config = {
-  entry: './src',
+  entry: './src/js/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, '../build'),
     filename: 'main.js'
-  },
-  mode: 'production'
+  }
 }
 
 module.exports = config
