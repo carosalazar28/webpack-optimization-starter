@@ -3,11 +3,14 @@ const { merge } = require('webpack-merge')
 const path = require('path')
 
 module.exports = merge(common, {
+  output: {
+    filename: 'main.js'
+  },
   mode: 'development',
   devServer: {
     port: 9000,
     static: {
-      directory: path.resolve(__dirname, '..')
+      directory: path.resolve(__dirname, '../build')
     },
     devMiddleware: {
       index: 'index.html',
@@ -17,5 +20,13 @@ module.exports = merge(common, {
       overlay: true,
     },
     liveReload: false,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
   }
 })

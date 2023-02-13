@@ -1,4 +1,5 @@
 
+import '../styles/index.css'
 import { onLoadEventHandler, newTodoEventHandler, removeTodoEventHandler, toggleTodoEventListener } from './event-handlers'
 
 window.addEventListener('load', onLoadEventHandler)
